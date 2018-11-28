@@ -1,0 +1,45 @@
+:host {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 0.5em;
+  display: grid;
+  grid-gap: 0.5em;
+}
+
+button {
+  position: relative;
+  border-width: medium;
+  transition-property: filter;
+  transition-timing-function: ease-in-out;
+  user-select: none;
+
+  &.active {
+    filter: invert(100%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:active,
+  &:hover {
+    border-width: thick;
+    opacity: 0.9;
+  }
+
+  div {
+    opacity: 0.6;
+    img {
+      position: absolute;
+      width: 90%;
+      height: 90%;
+      top: 5%;
+      bottom: 5%;
+      right: 5%;
+      left: 5%;
+    }
+  }
+}

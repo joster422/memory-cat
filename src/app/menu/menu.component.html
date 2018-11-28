@@ -1,0 +1,16 @@
+<form [formGroup]="menuService.form">
+  <span>
+    <label>Size</label> <input type="number" formControlName="size" />
+  </span>
+  <span>
+    <label>Difficulty</label>
+    <input type="number" formControlName="difficulty" />
+  </span>
+  <span>
+    <label>Timing</label>
+    <input type="number" formControlName="timing" step="0.1" />
+  </span>
+  <button type="button" (click)="menuService.showPattern()">
+    Show Pattern
+  </button>
+</form>
