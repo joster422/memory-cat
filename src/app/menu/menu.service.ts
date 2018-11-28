@@ -12,7 +12,7 @@ export class MenuService {
       4,
       [Validators.required, Validators.min(4), Validators.max(200)]
     ],
-    timing: [2, [Validators.required, Validators.min(0.2), Validators.max(3)]],
+    timing: [1, [Validators.required, Validators.min(0.2), Validators.max(3)]],
     size: [2, [Validators.required, Validators.min(2), Validators.max(5)]]
   });
 

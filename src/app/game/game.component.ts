@@ -65,7 +65,6 @@ export class GameComponent implements OnInit {
       `repeat(${size}, 1fr)`
     );
 
-    this.guesses = [];
     this.showGamePattern();
   }
 
@@ -73,6 +72,7 @@ export class GameComponent implements OnInit {
     this.timeMs = this.menuService.form.get("timing").value * 1000;
     this.timeouts.forEach(timeout => clearTimeout(timeout));
     this.timeouts = [];
+    this.guesses = [];
     this.game.grid.forEach(card => (card.isActive = false));
     this.allowClicks = false;
     for (let i = 0; i < this.game.pattern.length; i++) {
@@ -84,14 +84,13 @@ export class GameComponent implements OnInit {
               this.game.grid[this.game.pattern[i]].isActive = false;
             }, this.timeMs / 2)
           );
-          // 1 second delay for rendering
-        }, 1000 + i * this.timeMs)
+        }, i * this.timeMs)
       );
     }
     this.timeouts.push(
       window.setTimeout(() => {
         this.allowClicks = true;
-      }, 1000 + this.game.pattern.length * this.timeMs)
+      }, this.game.pattern.length * this.timeMs)
     );
   }
 
