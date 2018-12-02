@@ -22,9 +22,10 @@ export class SmallNumberComponent implements ControlValueAccessor {
 
   constructor() {}
 
-  get countDecimals() {
-    if (Math.floor(this.step) === this.step) return 0;
-    return this.step.toString().split(".")[1].length || 0;
+  get countDecimals(): number {
+    return Math.floor(this.step) === this.step
+      ? 0
+      : this.step.toString().split(".")[1].length || 0;
   }
 
   get decimalString() {

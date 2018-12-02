@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --aot --build-optimizer --skip-app-shell --output-path=dist --base-href=https://joster422.github.io/memory-cat/",
+    "deploy": "git subtree push --prefix dist origin gh-pages",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
