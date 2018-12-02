@@ -8,9 +8,10 @@ import { GameComponent } from "./game/game.component";
 import { MenuComponent } from "./menu/menu.component";
 
 import { MenuService } from "./menu/menu.service";
+import { SmallNumberComponent } from './small-number/small-number.component';
 
 @NgModule({
-  declarations: [AppComponent, GameComponent, MenuComponent],
+  declarations: [AppComponent, GameComponent, MenuComponent, SmallNumberComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

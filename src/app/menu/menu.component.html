@@ -1,14 +1,28 @@
 <button type="button" (click)="menuService.showPattern()">Show Pattern</button>
 <form [formGroup]="menuService.form">
   <span>
-    <label>Size</label> <input type="number" formControlName="size" />
+    <label>Size</label>
+    <mc-small-number
+      formControlName="size"
+      [min]="2"
+      [max]="5"
+    ></mc-small-number>
   </span>
   <span>
     <label>Difficulty</label>
-    <input type="number" formControlName="difficulty" />
+    <mc-small-number
+      formControlName="difficulty"
+      [min]="3"
+      [max]="100"
+    ></mc-small-number>
   </span>
   <span>
     <label>Timing</label>
-    <input type="number" formControlName="timing" step="0.1" />
+    <mc-small-number
+      formControlName="timing"
+      [min]="0.2"
+      [max]="3"
+      [step]="0.1"
+    ></mc-small-number>
   </span>
 </form>

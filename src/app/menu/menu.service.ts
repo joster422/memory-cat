@@ -8,12 +8,9 @@ import { Subject } from "rxjs";
 export class MenuService {
   showPattern$ = new Subject<null>();
   form = this.formBuilder.group({
-    difficulty: [
-      4,
-      [Validators.required, Validators.min(4), Validators.max(200)]
-    ],
-    timing: [1, [Validators.required, Validators.min(0.2), Validators.max(3)]],
-    size: [2, [Validators.required, Validators.min(2), Validators.max(5)]]
+    difficulty: [4],
+    timing: [1],
+    size: [2]
   });
 
   constructor(private formBuilder: FormBuilder) {}

@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+}
+
+span {
+  padding: 0.25em;
+  user-select: none;
+}
+
+button {
+  &.blue {
+    color: blue;
+  }
+  &.red {
+    color: red;
+  }
+  &:disabled {
+    color: lightgrey;
+    cursor: not-allowed;
+  }
+}
