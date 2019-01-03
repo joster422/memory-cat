@@ -29,7 +29,7 @@ export class SmallNumberComponent implements ControlValueAccessor {
   }
 
   get decimalString() {
-    return `1.${this.countDecimals}-1`;
+    return `1.0-${this.countDecimals}`;
   }
 
   decrement() {

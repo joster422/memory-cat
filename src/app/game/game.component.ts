@@ -19,7 +19,7 @@ export class GameComponent implements OnInit {
   timeouts: number[] = [];
 
   constructor(
-    private domSanitzer: DomSanitizer,
+    private domSanitizer: DomSanitizer,
     private menuService: MenuService
   ) {}
 
@@ -58,10 +58,10 @@ export class GameComponent implements OnInit {
     const difficulty = this.menuService.form.get("difficulty").value;
     const size = this.menuService.form.get("size").value;
     this.game = new Game(size, difficulty);
-    this.rows = this.domSanitzer.bypassSecurityTrustStyle(
+    this.rows = this.domSanitizer.bypassSecurityTrustStyle(
       `repeat(${size}, 1fr)`
     );
-    this.columns = this.domSanitzer.bypassSecurityTrustStyle(
+    this.columns = this.domSanitizer.bypassSecurityTrustStyle(
       `repeat(${size}, 1fr)`
     );
 
