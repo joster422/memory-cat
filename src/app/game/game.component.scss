@@ -1,4 +1,4 @@
-:host {
+#game {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -7,39 +7,61 @@
   margin: 0.5em;
   display: grid;
   grid-gap: 0.5em;
+
+  button {
+    position: relative;
+    border-width: medium;
+
+    user-select: none;
+
+    &.active {
+      animation-duration: 2s;
+      animation-name: spin;
+      animation-iteration-count: 1;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+      border-width: thick;
+      opacity: 0.9;
+      &:not(:disabled) {
+        box-shadow: 0 0 0.5em black;
+      }
+    }
+
+    div {
+      transition-property: all;
+      transition-timing-function: ease;
+      transition-duration: 1s;
+      opacity: 0.6;
+      img {
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        top: 5%;
+        bottom: 5%;
+        right: 5%;
+        left: 5%;
+      }
+    }
+  }
 }
 
-button {
-  position: relative;
-  border-width: medium;
-  transition-property: filter;
-  transition-timing-function: ease-in-out;
-  user-select: none;
+mc-form {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+}
 
-  &.active {
+@keyframes spin {
+  100% {
     filter: invert(100%);
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-
-  &:active,
-  &:hover {
-    border-width: thick;
-    opacity: 0.9;
-  }
-
-  div {
-    opacity: 0.6;
-    img {
-      position: absolute;
-      width: 90%;
-      height: 90%;
-      top: 5%;
-      bottom: 5%;
-      right: 5%;
-      left: 5%;
-    }
+    transform: rotateX(360deg);
   }
 }

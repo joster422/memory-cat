@@ -5,20 +5,23 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { GameComponent } from "./game/game.component";
-import { MenuComponent } from "./menu/menu.component";
-
-import { MenuService } from "./menu/menu.service";
-import { SmallNumberComponent } from './small-number/small-number.component';
+import { SmallNumberComponent } from "./game/form/small-number/small-number.component";
+import { FormComponent } from "./game/form/form.component";
 
 @NgModule({
-  declarations: [AppComponent, GameComponent, MenuComponent, SmallNumberComponent],
+  declarations: [
+    AppComponent,
+    GameComponent,
+    SmallNumberComponent,
+    FormComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [MenuService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

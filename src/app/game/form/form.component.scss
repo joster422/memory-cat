@@ -1,0 +1,32 @@
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+button,
+mc-small-number {
+  margin-right: 1em;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+button {
+  background: white;
+  border-width: medium;
+  border-color: lightgrey;
+  padding: 0.5em;
+  font-size: 1em;
+  cursor: pointer;
+  user-select: none;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 0.5em black;
+  }
+}

@@ -1,36 +1,26 @@
-import { Component, HostBinding, OnInit } from "@angular/core";
-import { DomSanitizer, SafeStyle } from "@angular/platform-browser";
+import { Component } from "@angular/core";
 import { Game } from "./game";
-import { MenuService } from "../menu/menu.service";
+import { Form } from "./form/form";
+
+import { DomSanitizer, SafeStyle } from "@angular/platform-browser";
 
 @Component({
   selector: "mc-game",
   templateUrl: "./game.component.html",
   styleUrls: ["./game.component.scss"]
 })
-export class GameComponent implements OnInit {
-  @HostBinding("style.grid-template-rows") rows: SafeStyle;
-  @HostBinding("style.grid-template-columns") columns: SafeStyle;
-
+export class GameComponent {
   allowClicks = false;
-  game: Game;
+  form = new Form();
+  game = new Game(this.form.size, this.form.difficulty);
   guesses: number[] = [];
-  timeMs: number;
   timeouts: number[] = [];
+  gridTemplateRowsColumns?: SafeStyle;
 
-  constructor(
-    private domSanitizer: DomSanitizer,
-    private menuService: MenuService
-  ) {}
-
-  ngOnInit() {
-    this.newGame();
-    this.setEvents();
-  }
+  constructor(private domSanitizer: DomSanitizer) {}
 
   click(index: number) {
     if (!this.allowClicks) return;
-
     this.guesses.push(index);
     this.checkGuess();
   }
@@ -55,21 +45,15 @@ export class GameComponent implements OnInit {
   }
 
   private newGame() {
-    const difficulty = this.menuService.form.get("difficulty").value;
-    const size = this.menuService.form.get("size").value;
-    this.game = new Game(size, difficulty);
-    this.rows = this.domSanitizer.bypassSecurityTrustStyle(
-      `repeat(${size}, 1fr)`
+    this.game = new Game(this.form.size, this.form.difficulty);
+    this.gridTemplateRowsColumns = this.domSanitizer.bypassSecurityTrustStyle(
+      `repeat(${this.form.size}, 1fr)`
     );
-    this.columns = this.domSanitizer.bypassSecurityTrustStyle(
-      `repeat(${size}, 1fr)`
-    );
-
     this.showGamePattern();
   }
 
   private showGamePattern() {
-    this.timeMs = this.menuService.form.get("timing").value * 1000;
+    const timeMs = this.form.timing * 1000;
     this.timeouts.forEach(timeout => clearTimeout(timeout));
     this.timeouts = [];
     this.guesses = [];
@@ -82,25 +66,15 @@ export class GameComponent implements OnInit {
           this.timeouts.push(
             window.setTimeout(() => {
               this.game.grid[this.game.pattern[i]].isActive = false;
-            }, this.timeMs / 2)
+            }, timeMs / 2)
           );
-        }, i * this.timeMs)
+        }, i * timeMs)
       );
     }
     this.timeouts.push(
       window.setTimeout(() => {
         this.allowClicks = true;
-      }, this.game.pattern.length * this.timeMs)
+      }, this.game.pattern.length * timeMs)
     );
-  }
-
-  private setEvents() {
-    this.menuService.showPattern$.asObservable().subscribe(() => {
-      this.showGamePattern();
-    });
-    this.menuService.form.valueChanges.subscribe(() => {
-      if (!this.menuService.form.valid) return;
-      this.newGame();
-    });
   }
 }

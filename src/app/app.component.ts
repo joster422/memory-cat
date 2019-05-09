@@ -2,6 +2,6 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "mc-root",
-  templateUrl: "./app.component.html"
+  template: "<mc-game><mc-game>"
 })
 export class AppComponent {}

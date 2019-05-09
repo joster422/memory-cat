@@ -1,0 +1,12 @@
+<label>
+  <ng-content></ng-content>
+</label>
+<button type="button" [disabled]="value <= min" (click)="decrement()">
+  ➖
+</button>
+<span>
+  {{ value | number: decimalString }}
+</span>
+<button type="button" [disabled]="value >= max" (click)="increment()" (keypress)="increment()">
+  ➕
+</button>

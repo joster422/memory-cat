@@ -5,7 +5,7 @@ const catMap: Cat = {
   fur: 10,
   mouth: 10
 };
-const hex = "0123456789ABCDE";
+const hexMap = "0123456789ABCDE";
 
 export class Game {
   grid: Card[];
@@ -29,35 +29,34 @@ export class Game {
     );
   }
 
-  private getRandomCat(): Cat {
-    const randomCat: Cat = {
-      accessory: Math.floor(Math.random() * catMap.accessory),
-      body: Math.floor(Math.random() * catMap.body),
-      eyes: Math.floor(Math.random() * catMap.eyes),
-      fur: Math.floor(Math.random() * catMap.fur),
-      mouth: Math.floor(Math.random() * catMap.mouth)
-    };
-
+  getRandomCat(): Cat {
+    const cat = new Cat(
+      Math.floor(Math.random() * catMap.accessory),
+      Math.floor(Math.random() * catMap.body),
+      Math.floor(Math.random() * catMap.eyes),
+      Math.floor(Math.random() * catMap.fur),
+      Math.floor(Math.random() * catMap.mouth)
+    );
     return this.grid.some(
       panel =>
-        panel.cat.accessory === randomCat.accessory &&
-        panel.cat.body === randomCat.body &&
-        panel.cat.eyes === randomCat.eyes &&
-        panel.cat.fur === randomCat.fur &&
-        panel.cat.mouth === randomCat.mouth
+        panel.cat.accessory === cat.accessory &&
+        panel.cat.body === cat.body &&
+        panel.cat.eyes === cat.eyes &&
+        panel.cat.fur === cat.fur &&
+        panel.cat.mouth === cat.mouth
     )
       ? this.getRandomCat()
-      : randomCat;
+      : cat;
   }
 
-  private getRandomHex(): string {
-    let randomHex = "#";
+  getRandomHex(): string {
+    let hex = "#";
     for (let i = 0; i < 6; i++) {
-      randomHex += hex[Math.floor(Math.random() * hex.length)];
+      hex += hexMap[Math.floor(Math.random() * hexMap.length)];
     }
-    return this.grid.some(panel => panel.hex === randomHex)
+    return this.grid.some(panel => panel.hex === hex)
       ? this.getRandomHex()
-      : randomHex;
+      : hex;
   }
 }
 
@@ -67,9 +66,11 @@ export class Card {
 }
 
 class Cat {
-  accessory: number;
-  body: number;
-  eyes: number;
-  fur: number;
-  mouth: number;
+  constructor(
+    public accessory: number,
+    public body: number,
+    public eyes: number,
+    public fur: number,
+    public mouth: number
+  ) {}
 }
