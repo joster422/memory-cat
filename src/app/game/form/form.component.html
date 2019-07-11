@@ -5,13 +5,13 @@
   <button type="button" (click)="showPattern$.next()">
     Show Pattern
   </button>
-  <mc-small-number [(ngModel)]="model.size" name="size" [min]="2" [max]="5">
+  <fc-small-number [(ngModel)]="model.size" name="size" [min]="2" [max]="5">
     Size
-  </mc-small-number>
-  <mc-small-number [(ngModel)]="model.difficulty" name="difficulty" [min]="3" [max]="100">
+  </fc-small-number>
+  <fc-small-number [(ngModel)]="model.difficulty" name="difficulty" [min]="3" [max]="100">
     Difficulty
-  </mc-small-number>
-  <mc-small-number [(ngModel)]="model.timing" name="timing" [min]="0.2" [max]="2" [step]="0.1">
+  </fc-small-number>
+  <fc-small-number [(ngModel)]="model.timing" name="timing" [min]="0.2" [max]="2" [step]="0.1">
     Timing
-  </mc-small-number>
+  </fc-small-number>
 </form>
