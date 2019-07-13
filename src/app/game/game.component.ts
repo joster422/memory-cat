@@ -13,11 +13,12 @@ export class GameComponent {
   allowClicks = false;
   form = new Form();
   game = new Game(this.form.size, this.form.difficulty);
+  gridTemplateRowsColumns?: SafeStyle;
   guesses: number[] = [];
   timeouts: number[] = [];
-  gridTemplateRowsColumns?: SafeStyle;
+  timeoutMs?: number;
 
-  constructor(private domSanitizer: DomSanitizer) {}
+  constructor(private domSanitizer: DomSanitizer) { }
 
   click(index: number) {
     if (!this.allowClicks) return;
@@ -25,22 +26,16 @@ export class GameComponent {
     this.checkGuess();
   }
 
-  invertHex(hex: string): string {
-    return `#${`000000${(0xffffff ^ parseInt(hex.substring(1), 16)).toString(
-      16
-    )}`.slice(-6)}`;
-  }
-
   private checkGuess() {
     if (!this.game.isCorrect(this.guesses)) {
+      alert("You lose");
       this.newGame();
-      console.log("lose");
       return;
     }
 
     if (this.guesses.length >= this.game.pattern.length) {
+      alert("You win");
       this.newGame();
-      console.log("win");
     }
   }
 
@@ -53,7 +48,7 @@ export class GameComponent {
   }
 
   private showGamePattern() {
-    const timeMs = this.form.timing * 1000;
+    const timeMs = this.timeoutMs = this.form.timing * 100;
     this.timeouts.forEach(timeout => clearTimeout(timeout));
     this.timeouts = [];
     this.guesses = [];

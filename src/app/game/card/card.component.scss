@@ -1,0 +1,43 @@
+button {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-width: medium;
+    user-select: none;
+
+    &.active {
+      animation-duration: 2s;
+      animation-name: spin;
+      animation-iteration-count: 1;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+      border-width: thick;
+      opacity: 0.9;
+      &:not(:disabled) {
+        box-shadow: 0 0 0.5em black;
+      }
+    }
+
+    div {
+      transition-property: all;
+      transition-timing-function: ease;
+      transition-duration: 1s;
+      opacity: 0.6;
+      img {
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        top: 5%;
+        bottom: 5%;
+        right: 5%;
+        left: 5%;
+      }
+    }
+  }

@@ -1,5 +1,5 @@
 export class Form {
   difficulty = 4;
-  timing = 1;
+  timing = 10;
   size = 2;
 }

@@ -1,0 +1,10 @@
+<button type="button" [class.active]="card.isActive" [disabled]="disabled" [style.background]="card.hex"
+  [style.border-color]="invertHex(card.hex)" [style.transition-duration]="timeout / 2 + 'ms'" (click)="action.emit()">
+  <div>
+    <img src="assets/body{{card.cat.body}}.png" draggable="false" />
+    <img src="assets/fur{{card.cat.fur}}.png" draggable="false" />
+    <img src="assets/eyes{{card.cat.eyes}}.png" draggable="false" />
+    <img src="assets/mouth{{card.cat.mouth}}.png" draggable="false" />
+    <img src="assets/accessory{{card.cat.accessory}}.png" draggable="false" />
+  </div>
+</button>

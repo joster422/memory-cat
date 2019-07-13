@@ -29,15 +29,18 @@ export class FormComponent implements OnInit {
   restart$ = new Subject();
   showPattern$ = new Subject();
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
-    this.restart$.pipe(debounceTime(500)).subscribe(() => this.restart.emit());
+    this.restart$
+      .pipe(debounceTime(500))
+      .subscribe(() => this.restart.emit());
+
     this.showPattern$
       .pipe(debounceTime(500))
       .subscribe(() => this.showPattern.emit());
-    this.form
-      .valueChanges!.pipe(debounceTime(500))
-      .subscribe(() => this.restart.emit());
+
+    this.form.valueChanges!
+      .subscribe(() => this.restart$.next());
   }
 }

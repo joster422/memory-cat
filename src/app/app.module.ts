@@ -2,26 +2,28 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormControlModule } from "@joster/form-control";
 
 import { AppComponent } from "./app.component";
 import { GameComponent } from "./game/game.component";
-import { SmallNumberComponent } from "./game/form/small-number/small-number.component";
 import { FormComponent } from "./game/form/form.component";
+import { CardComponent } from './game/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameComponent,
-    SmallNumberComponent,
-    FormComponent
+    FormComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormControlModule,
     FormsModule,
     ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

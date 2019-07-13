@@ -1,10 +1,11 @@
-const catMap: Cat = {
-  accessory: 16,
-  body: 15,
-  eyes: 15,
-  fur: 10,
-  mouth: 10
-};
+import { Cat } from './cat';
+import { Card } from './card/card';
+
+const catAccessoryTotal = 16;
+const catBodyTotal = 15;
+const catEyesTotal = 15;
+const catFurTotal = 10;
+const catMouthTotal = 10;
 const hexMap = "0123456789ABCDE";
 
 export class Game {
@@ -31,11 +32,11 @@ export class Game {
 
   getRandomCat(): Cat {
     const cat = new Cat(
-      Math.floor(Math.random() * catMap.accessory),
-      Math.floor(Math.random() * catMap.body),
-      Math.floor(Math.random() * catMap.eyes),
-      Math.floor(Math.random() * catMap.fur),
-      Math.floor(Math.random() * catMap.mouth)
+      Math.floor(Math.random() * catAccessoryTotal),
+      Math.floor(Math.random() * catBodyTotal),
+      Math.floor(Math.random() * catEyesTotal),
+      Math.floor(Math.random() * catFurTotal),
+      Math.floor(Math.random() * catMouthTotal)
     );
     return this.grid.some(
       panel =>
@@ -58,19 +59,4 @@ export class Game {
       ? this.getRandomHex()
       : hex;
   }
-}
-
-export class Card {
-  isActive = false;
-  constructor(public cat: Cat, public hex: string) {}
-}
-
-class Cat {
-  constructor(
-    public accessory: number,
-    public body: number,
-    public eyes: number,
-    public fur: number,
-    public mouth: number
-  ) {}
 }
