@@ -1,17 +1,17 @@
 <form novalidate #form="ngForm">
   <fc-button (click)="restart$.next()">
-    🔄 Restart
+    Restart 🔄
   </fc-button>
   <fc-button (click)="showPattern$.next()">
-    🐱‍👤 Show Pattern
+    Show Pattern 🐱‍👤
   </fc-button>
   <fc-small-number [(ngModel)]="model.size" name="size" [min]="2" [max]="5">
-    ↖️ Size
+    Size ↖️
   </fc-small-number>
   <fc-small-number [(ngModel)]="model.difficulty" name="difficulty" [min]="3" [max]="100">
-    🎖️ Difficulty
+    Difficulty 🎖️
   </fc-small-number>
   <fc-small-number [(ngModel)]="model.timing" name="timing" [min]="1" [max]="20">
-    ⏱️ Timing
+    Timing ⏱️
   </fc-small-number>
 </form>
