@@ -1,12 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild
-} from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
@@ -14,7 +6,7 @@ import { debounceTime } from "rxjs/operators";
 import { Form } from "./form";
 
 @Component({
-  selector: "mc-form[model]",
+  selector: "mem-cat-form[model]",
   templateUrl: "./form.component.html",
   styleUrls: ["./form.component.scss"]
 })
@@ -23,8 +15,6 @@ export class FormComponent implements OnInit {
 
   @Output() restart = new EventEmitter();
   @Output() showPattern = new EventEmitter();
-
-  @ViewChild("form") form!: NgForm;
 
   restart$ = new Subject();
   showPattern$ = new Subject();
@@ -39,8 +29,5 @@ export class FormComponent implements OnInit {
     this.showPattern$
       .pipe(debounceTime(500))
       .subscribe(() => this.showPattern.emit());
-
-    this.form.valueChanges!
-      .subscribe(() => this.restart$.next());
   }
 }

@@ -15,7 +15,7 @@ export class Game {
   constructor(public size: number, private difficulty: number) {
     this.grid = [];
     for (let i = 0; i < Math.pow(this.size, 2); i++) {
-      this.grid.push(new Card(this.getRandomCat(), this.getRandomHex()));
+      this.grid.push(new Card(this.getRandomCat(), this.getRandomHex(), Math.random() >= 0.5));
     }
     this.pattern = [];
     for (let i = 0; i < this.difficulty; i++) {

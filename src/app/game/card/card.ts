@@ -5,6 +5,7 @@ export class Card {
 
     constructor(
         public cat: Cat,
-        public hex: string
+        public hex: string,
+        public faceLeft = false
     ) { }
 }

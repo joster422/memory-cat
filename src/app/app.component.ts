@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component({
-  selector: "mc-root",
-  template: "<mc-game><mc-game>"
+  selector: "mem-cat-root",
+  template: "<mem-cat-game><mem-cat-game>"
 })
-export class AppComponent {}
+export class AppComponent { }

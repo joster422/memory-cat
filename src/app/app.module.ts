@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { FormControlModule } from "@joster/form-control";
 
 import { AppComponent } from "./app.component";
@@ -20,8 +20,7 @@ import { CardComponent } from './game/card/card.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormControlModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
