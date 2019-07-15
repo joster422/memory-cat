@@ -9,7 +9,7 @@ import { Card } from './card';
 export class CardComponent {
   @Input() card!: Card;
   @Input() disabled = false;
-  @Input() timeout?: number;
+  @Input() timeout = 1000;
 
   @Output() action = new EventEmitter();
 
