@@ -24,11 +24,9 @@ export class GameComponent {
 
   click(index: number) {
     if (!this.allowClicks) return;
-    this.guesses.push(index);
-    this.checkGuess();
-  }
 
-  private checkGuess() {
+    this.guesses.push(index);
+
     if (!this.game.isCorrect(this.guesses)) {
       alert("You lose");
       this.newGame();
@@ -41,15 +39,17 @@ export class GameComponent {
     }
   }
 
-  private newGame() {
+  newGame() {
     this.game = new Game(this.form.size, this.form.difficulty);
+
     this.gridTemplateRowsColumns = this.domSanitizer.bypassSecurityTrustStyle(
       `repeat(${this.form.size}, 1fr)`
     );
+
     this.showGamePattern();
   }
 
-  private showGamePattern() {
+  showGamePattern() {
     const timeMs = this.timeoutMs = this.form.timing * 100;
     this.timeouts.forEach(timeout => clearTimeout(timeout));
     this.timeouts = [];
