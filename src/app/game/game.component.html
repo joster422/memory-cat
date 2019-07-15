@@ -1,6 +1,0 @@
-<div id="game" [style.grid-template-rows]="gridTemplateRowsColumns"
-  [style.grid-template-columns]="gridTemplateRowsColumns">
-  <mem-cat-card *ngFor="let card of game.grid; let idx = index" [card]="card" [disabled]="!allowClicks"
-    [timeout]="timeoutMs" (action)="click(idx)"></mem-cat-card>
-</div>
-<mem-cat-form [model]="form" (restart)="newGame()" (showPattern)="showGamePattern()"></mem-cat-form>
