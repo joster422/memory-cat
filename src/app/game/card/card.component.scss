@@ -3,7 +3,9 @@ button {
     height: 100%;
     position: relative;
     border-width: medium;
+    border-radius: 0.5em;
     user-select: none;
+    cursor: pointer;
 
     &.active {
         animation-duration: 1s;
@@ -34,14 +36,13 @@ button {
         transition-property: all;
         transition-timing-function: ease;
         transition-duration: 1s;
-        opacity: 0.6;
+        opacity: 0.7;
 
         img {
             position: absolute;
             width: 90%;
             height: 90%;
-            top: 5%;
-            bottom: 5%;
+            top: 10%;
             right: 5%;
             left: 5%;
         }
