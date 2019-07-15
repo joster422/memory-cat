@@ -6,38 +6,52 @@ button {
     user-select: none;
 
     &.active {
-      animation-duration: 2s;
-      animation-name: spin;
-      animation-iteration-count: 1;
+        animation-duration: 1s;
+        animation-name: spin;
+        animation-iteration-count: 1;
+    }
+
+    &.flip > div > img {
+        transform: rotateY(180deg);
     }
 
     &:disabled {
-      cursor: not-allowed;
+        cursor: not-allowed;
     }
 
     &:active,
     &:focus,
     &:hover {
-      border-width: thick;
-      opacity: 0.9;
-      &:not(:disabled) {
-        box-shadow: 0 0 0.5em black;
-      }
+        border-width: thick;
+        opacity: 0.9;
+
+        &:not(:disabled) {
+            box-shadow: 0 0 0.5em black;
+        }
     }
 
     div {
-      transition-property: all;
-      transition-timing-function: ease;
-      transition-duration: 1s;
-      opacity: 0.6;
-      img {
-        position: absolute;
-        width: 90%;
-        height: 90%;
-        top: 5%;
-        bottom: 5%;
-        right: 5%;
-        left: 5%;
-      }
+        transition-property: all;
+        transition-timing-function: ease;
+        transition-duration: 1s;
+        opacity: 0.6;
+
+        img {
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            top: 5%;
+            bottom: 5%;
+            right: 5%;
+            left: 5%;
+        }
     }
-  }
+}
+
+
+@keyframes spin {
+    100% {
+        filter: invert(100%);
+        transform: rotateX(540deg);
+    }
+}

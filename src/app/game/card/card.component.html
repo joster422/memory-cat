@@ -1,5 +1,6 @@
-<button type="button" [class.active]="card.isActive" [disabled]="disabled" [style.background]="card.hex"
-  [style.border-color]="invertHex(card.hex)" [style.transition-duration]="timeout / 2 + 'ms'" (click)="action.emit()">
+<button type="button" [class.active]="card.isActive" [class.flip]="card.faceLeft" [disabled]="disabled"
+  [style.background]="card.hex" [style.border-color]="invertHex(card.hex)"
+  [style.transition-duration]="timeout / 2 + 'ms'" (click)="action.emit()">
   <div>
     <img src="assets/body{{card.cat.body}}.png" draggable="false" />
     <img src="assets/fur{{card.cat.fur}}.png" draggable="false" />

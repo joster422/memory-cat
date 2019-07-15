@@ -5,20 +5,22 @@ import { Form } from "./form/form";
 import { DomSanitizer, SafeStyle } from "@angular/platform-browser";
 
 @Component({
-  selector: "mc-game",
+  selector: "mem-cat-game",
   templateUrl: "./game.component.html",
   styleUrls: ["./game.component.scss"]
 })
 export class GameComponent {
   allowClicks = false;
   form = new Form();
-  game = new Game(this.form.size, this.form.difficulty);
+  game!: Game;
   gridTemplateRowsColumns?: SafeStyle;
   guesses: number[] = [];
   timeouts: number[] = [];
   timeoutMs?: number;
 
-  constructor(private domSanitizer: DomSanitizer) { }
+  constructor(private domSanitizer: DomSanitizer) {
+    this.newGame();
+  }
 
   click(index: number) {
     if (!this.allowClicks) return;

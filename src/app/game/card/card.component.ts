@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Card } from './card';
 
 @Component({
-  selector: 'mc-card',
+  selector: 'mem-cat-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
